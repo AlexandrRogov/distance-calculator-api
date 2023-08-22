@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.10'
+    id 'io.spring.dependency-management' version '1.1.2'
+    id 'jacoco'
+    id 'checkstyle'
+}
+
+group = 'gmail.rohaualexandr'
+version = '0.0.1'
+
+java {
+    sourceCompatibility = '17'
+}
+
+apply from: 'checkstyle.gradle'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    //swagger
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+    //buckets4j
+    // https://mvnrepository.com/artifact/com.github.vladimir-bukhtoyarov/bucket4j-redis
+    implementation 'com.github.vladimir-bukhtoyarov:bucket4j-redis:7.6.0'
+
+    //redis
+    // https://mvnrepository.com/artifact/io.lettuce/lettuce-core
+    implementation 'io.lettuce:lettuce-core:6.2.6.RELEASE'
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
+    compileOnly 'com.google.code.findbugs:annotations:3.0.1'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    //test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-standalone
+    testImplementation 'com.github.tomakehurst:wiremock-standalone:2.27.2'
+    testImplementation "org.testcontainers:testcontainers:1.19.0"
+    testImplementation 'org.projectlombok:lombok:1.18.28'
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+test {
+    useJUnitPlatform()
+}

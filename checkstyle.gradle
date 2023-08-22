@@ -1,0 +1,28 @@
+checkstyle {
+
+    project.ext.checkstyleVersion = '10.12.2'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    ignoreFailures = true
+    configFile = file("${project.rootDir}/checkstyle.xml")
+
+    showViolations = true
+
+    checkstyleMain {
+        source = sourceSets.main.allSource
+    }
+
+    configurations {
+        checkstyle
+    }
+
+    dependencies {
+        assert project.hasProperty("checkstyleVersion")
+
+        checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
+    }
+}

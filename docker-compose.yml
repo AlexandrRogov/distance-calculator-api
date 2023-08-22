@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  app:
+    image: distance-calculator-api:0.0.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - "author=rohaualexandr"
+    container_name: distance-calculator-api
+    ports:
+      - "8080:8080"
+    links:
+      - redis
+    restart: always
+    environment:
+      port: 8080
+      REDIS_URL: redis://cache
+#    networks:
+#      - my-app-network
+#    deploy:
+#      replicas: 2  # Количество реплик приложения
+#      mode: replicated
+
+  redis:
+    image: redis:5
+    labels:
+      - "author=rohaualexandr"
+    container_name: redis
+    restart: always
+    expose:
+      - "6379:6379"
+    command: redis-server --save "" --appendonly no
+#    networks:
+#      - my-app-network
+
+#networks:
+#  my-app-network:
+#    driver: overlay
+#    attachable: true

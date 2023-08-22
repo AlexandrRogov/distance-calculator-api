@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+logging:
+  level:
+    root: INFO
+
+buckets:
+  basedOnTimeForRefillingBucketUpToMax: PT10M #10 min
+  capacity: 10
+  period: PT10M #10 min
+
+redis-config:
+  redisHost: "redis"
+  redisPort: 6379
+  timeout: PT10S #10 s

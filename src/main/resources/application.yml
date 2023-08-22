@@ -12,8 +12,8 @@ logging:
 
 buckets:
   basedOnTimeForRefillingBucketUpToMax: PT10M #10 min
-  capacity: 10
-  period: PT10M #10 min
+  capacity: 11
+  period: PT1M #10 min
 
 redis-config:
   redisHost: "redis"

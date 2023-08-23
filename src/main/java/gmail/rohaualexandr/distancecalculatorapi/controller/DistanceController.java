@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RequestMapping(value = DistanceController.URL)
-@Tag(name = "Distance Calculator API")
 @RestController
 public class DistanceController {
 
@@ -23,10 +22,10 @@ public class DistanceController {
 
     @GetMapping()
     public ResponseDistance getDistance(
-            @RequestParam("lat1") double lat1,
-            @RequestParam("lon1") double lon1,
-            @RequestParam("lat2") double lat2,
-            @RequestParam("lon2") double lon2
+            @RequestParam("latitude1") double lat1,
+            @RequestParam("longitude1") double lon1,
+            @RequestParam("latitude2") double lat2,
+            @RequestParam("longitude2") double lon2
     ) {
         return distanceService.getDistance(lat1, lon1, lat2, lon2);
     }

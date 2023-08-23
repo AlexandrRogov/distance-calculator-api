@@ -2,10 +2,6 @@ package gmail.rohaualexandr.distancecalculatorapi.controller;
 
 import gmail.rohaualexandr.distancecalculatorapi.controller.dto.ResponseDistance;
 import gmail.rohaualexandr.distancecalculatorapi.service.DistanceService;
-
-import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +13,6 @@ public class DistanceController {
     public static final String URL = "/distance";
 
     private final DistanceService distanceService;
-
-    @Operation(summary = "Get a distance two point by latitude and longitude ", description = "Returns a distance in km")
 
     @GetMapping()
     public ResponseDistance getDistance(

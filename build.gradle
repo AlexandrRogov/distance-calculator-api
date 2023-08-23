@@ -31,8 +31,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    //swagger
-    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+    implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
 
     //buckets4j
     // https://mvnrepository.com/artifact/com.github.vladimir-bukhtoyarov/bucket4j-redis

@@ -5,13 +5,11 @@ import gmail.rohaualexandr.distancecalculatorapi.configuration.RedisProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableConfigurationProperties({
         RedisProperties.class,
         BucketsProperties.class
 })
-@EnableSwagger2
 @SpringBootApplication
 public class DistanceCalculatorApiApplication {
 

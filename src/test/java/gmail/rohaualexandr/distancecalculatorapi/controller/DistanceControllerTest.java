@@ -13,7 +13,7 @@ public class DistanceControllerTest extends WireMockIntegrationTest {
 
     @Test
     public void getCheckRestrictRequest() {
-        String url = "/distance?lat1=1&lon1=1&lat2=1&lon2=1";
+        String url = "/distance?latitude1=1&longitude1=1&latitude2=1&longitude2=1";
         IntStream.rangeClosed(1, 4)
                 .boxed()
                 .forEach(count -> mockMvcGet(url, HttpStatus.OK.value()));
@@ -23,7 +23,7 @@ public class DistanceControllerTest extends WireMockIntegrationTest {
 
     @Test
     public void getBedRequest() {
-        String url = "/distance?lat1=1&lon1=1&lat2=1";
+        String url = "/distance?latitude1=1&longitude1=1&latitude2=1";
 
         mockMvcGet(url, HttpStatus.BAD_REQUEST.value());
     }
